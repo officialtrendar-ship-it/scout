@@ -1,0 +1,1790 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emre Acet Scouting - Oyuncu İnceleme Raporu</title>
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Header Styles */
+        .header {
+            background-color: #5b3a8e;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Section Styles */
+        .section {
+            background: white;
+            margin-bottom: 30px;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #5b3a8e;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #5b3a8e;
+        }
+
+        /* Form Styles */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #333;
+            font-size: 14px;
+        }
+
+        .form-input,
+        .form-textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            font-size: 14px;
+            font-family: inherit;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-input:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: #5b3a8e;
+            box-shadow: 0 0 0 3px rgba(91, 58, 142, 0.1);
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* Two Column Layout */
+        .two-column {
+            display: flex;
+            gap: 30px;
+        }
+
+        .two-column > div {
+            flex: 1;
+        }
+
+        /* Scoreboard Styles */
+        .scoreboard {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 25px;
+            padding: 20px;
+            background: #f5f5f5;
+            border-radius: 8px;
+        }
+
+        .scoreboard input[type="text"] {
+            flex: 1;
+            max-width: 200px;
+            text-align: center;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .scoreboard input[type="number"] {
+            width: 80px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: #5b3a8e;
+        }
+
+        .scoreboard .vs {
+            font-size: 18px;
+            font-weight: bold;
+            color: #5b3a8e;
+            margin: 0 10px;
+        }
+
+        /* Scout Name Special Styling */
+        .scout-name {
+            font-size: 16px;
+            font-weight: bold;
+            padding: 15px;
+            background: #f8f9fa;
+            border: 2px solid #5b3a8e;
+        }
+
+        /* Table Styles */
+        .team-tables {
+            display: flex;
+            gap: 30px;
+            margin-top: 25px;
+        }
+
+        .esame-block {
+            flex: 1;
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .team-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        .team-table th {
+            background: #5b3a8e;
+            color: white;
+            padding: 12px 8px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 13px;
+        }
+
+        .team-table td {
+            padding: 8px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        .team-table input {
+            width: 100%;
+            border: none;
+            padding: 6px;
+            text-align: center;
+            font-size: 13px;
+            background: transparent;
+        }
+
+        .team-table input:focus {
+            outline: 2px solid #5b3a8e;
+            background: white;
+        }
+
+        /* Technical Director Input */
+        .tech-director {
+            margin-bottom: 15px;
+        }
+
+        .tech-director input {
+            font-weight: bold;
+            background: white;
+            border: 2px solid #5b3a8e;
+        }
+
+        /* Toolbar Styles */
+        .toolbar-content {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .toolbar-btn {
+            background: #5b3a8e;
+            color: white;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            min-height: 40px;
+        }
+
+        .toolbar-btn:hover {
+            background: #4a2d75;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(91, 58, 142, 0.3);
+        }
+
+        .btn-icon {
+            font-size: 16px;
+        }
+
+        /* Dropdown Styles */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-btn {
+            position: relative;
+        }
+
+        .dropdown-arrow {
+            margin-left: 5px;
+            font-size: 12px;
+            transition: transform 0.3s ease;
+        }
+
+        .dropdown.active .dropdown-arrow {
+            transform: rotate(180deg);
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            min-width: 180px;
+            z-index: 1000;
+            display: none;
+            margin-top: 5px;
+        }
+
+        .dropdown.active .dropdown-menu {
+            display: block;
+        }
+
+        .dropdown-menu button {
+            width: 100%;
+            padding: 12px 16px;
+            border: none;
+            background: none;
+            text-align: left;
+            cursor: pointer;
+            font-size: 14px;
+            color: #333;
+            transition: background-color 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .dropdown-menu button:hover {
+            background: #f5f5f5;
+        }
+
+        .dropdown-menu button:first-child {
+            border-radius: 4px 4px 0 0;
+        }
+
+        .dropdown-menu button:last-child {
+            border-radius: 0 0 4px 4px;
+        }
+
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #28a745;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 6px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            z-index: 2000;
+            transform: translateX(400px);
+            transition: transform 0.3s ease;
+        }
+
+        .toast.show {
+            transform: translateX(0);
+        }
+
+        /* Modal Styles */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1500;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.show {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 8px;
+            padding: 30px;
+            max-width: 800px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .modal-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #5b3a8e;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #666;
+            padding: 5px;
+        }
+
+        .modal-close:hover {
+            color: #333;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        .reports-list {
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .report-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            margin-bottom: 10px;
+            background: #f8f9fa;
+        }
+
+        .report-info h4 {
+            margin: 0 0 5px 0;
+            color: #333;
+            font-size: 16px;
+        }
+
+        .report-info p {
+            margin: 0;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .report-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .action-btn {
+            padding: 6px 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .action-btn.open {
+            background: #28a745;
+            color: white;
+        }
+
+        .action-btn.copy {
+            background: #17a2b8;
+            color: white;
+        }
+
+        .action-btn.delete {
+            background: #dc3545;
+            color: white;
+        }
+
+        .action-btn:hover {
+            opacity: 0.8;
+            transform: translateY(-1px);
+        }
+
+        /* Print Styles */
+        @media print {
+            .toolbar {
+                display: none !important;
+            }
+
+            /* Hide toast notifications on print */
+            .toast, .save-toast, .toast-container, [role="status"], [aria-live] {
+                display: none !important;
+            }
+
+            body {
+                background: white;
+                font-size: 12px;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .container {
+                max-width: none;
+                padding: 0;
+            }
+
+            .section {
+                box-shadow: none;
+                border: 1px solid #ccc;
+                margin-bottom: 20px;
+                page-break-inside: avoid;
+            }
+
+            .header {
+                background: #5b3a8e !important;
+                -webkit-print-color-adjust: exact;
+                color-adjust: exact;
+            }
+
+            .team-table th {
+                background: #5b3a8e !important;
+                -webkit-print-color-adjust: exact;
+                color-adjust: exact;
+            }
+
+            .form-input,
+            .form-textarea,
+            .team-table input {
+                border: 1px solid #333 !important;
+                background: white !important;
+            }
+
+            .team-table {
+                border-collapse: collapse;
+            }
+
+            .team-table td,
+            .team-table th {
+                border: 1px solid #333 !important;
+            }
+
+            /* Hide placeholder text on print */
+            ::-webkit-input-placeholder { color: transparent !important; }
+            :-ms-input-placeholder { color: transparent !important; }
+            ::placeholder { color: transparent !important; }
+
+            /* Render inputs/textarea like plain text for better PDF look */
+            input, textarea, select {
+                border: none !important;
+                box-shadow: none !important;
+                background: transparent !important;
+                padding-left: 0 !important;
+            }
+
+            /* On print, hide ESAME rows that have no user data */
+            .print-empty-row { display: none !important; }
+
+            /* ESAME: keep coach + table together on print */
+            .esame-block {
+                page-break-inside: avoid;
+                break-inside: avoid;
+                display: block;
+                margin-bottom: 1rem;
+            }
+            .esame-block .coach-field,
+            .esame-block table {
+                page-break-inside: avoid;
+            }
+
+            /* Scoreboard print styles */
+            .scoreboard {
+                display: table !important;
+                width: 100% !important;
+                table-layout: fixed !important;
+            }
+            .scoreboard input[type="text"],
+            .scoreboard input[type="number"],
+            .scoreboard .vs {
+                display: table-cell !important;
+                width: auto !important;
+                text-align: center !important;
+                border: none !important;
+                background: transparent !important;
+                box-shadow: none !important;
+                padding: .1rem 0 !important;
+                overflow: visible !important;
+                text-overflow: clip !important;
+                white-space: nowrap !important;
+            }
+        }
+
+        /* Clean PDF / Print Setup */
+        @page {
+            size: A4;
+            margin: 15mm;
+        }
+
+        /* Lightweight inline modal for the print instruction */
+        .print-hint {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,.45);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+        }
+        .print-hint .card {
+            background: #fff;
+            max-width: 520px;
+            width: 92%;
+            border-radius: 12px;
+            padding: 16px 18px;
+            box-shadow: 0 10px 24px rgba(0,0,0,.18);
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        .print-hint h3 { margin: 0 0 6px 0; font-size: 16px; }
+        .print-hint ul { margin: 8px 0 0 18px; }
+        .print-hint .actions { display: flex; gap: 8px; justify-content: flex-end; margin-top: 12px; }
+        .print-hint button { padding: 8px 12px; border-radius: 8px; border: 1px solid #ddd; cursor: pointer; }
+        .print-hint button.primary { background: #5b3a8e; color: #fff; border-color: #5b3a8e; }
+
+        /* === Restore neutral system font; avoid unexpected overrides === */
+        body, input, textarea, select, button, table {
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif !important;
+            font-size: 16px;
+            line-height: 1.4;
+        }
+
+        @media print {
+            /* Show ESAME teams vertically (not side-by-side) only on print */
+            .esame-columns {
+                display: block !important;      /* stack */
+                width: 100% !important;
+            }
+
+            /* Keep coach + table together; avoid mid-page splits */
+            .esame-block {
+                page-break-inside: avoid;
+                break-inside: avoid;
+                width: 100% !important;
+                margin: 0 0 8mm 0;              /* small spacing for readability */
+            }
+
+            /* Force each subsequent team to start on a new page */
+            .esame-block + .esame-block {
+                page-break-before: always;      /* second team starts a new page */
+                break-before: page;
+            }
+
+            /* Make the ESAME table fill the page width and stay stable */
+            .esame-block .table-wrap { overflow: visible !important; padding: 0; background: transparent; }
+            .esame-block .esame-table {
+                width: 100% !important;
+                table-layout: fixed !important;
+                border-collapse: collapse !important;
+            }
+            .esame-block .esame-table th,
+            .esame-block .esame-table td {
+                padding: 6pt !important;
+                border: 1px solid #444 !important; /* darker borders print better */
+            }
+
+            /* Keep coach input with table and render clean */
+            .coach-field input,
+            .coach-field textarea {
+                border: none !important;
+                box-shadow: none !important;
+                background: transparent !important;
+                padding: 0 !important;
+            }
+
+            /* Hide transient UI (toasts/toolbars) if not already hidden */
+            .toolbar, .toast, .save-toast, [role="status"], [aria-live] {
+                display: none !important;
+            }
+
+            /* Ensure any legacy PDF modal never appears */
+            #pdfModal, .pdf-modal, .print-hint { 
+                display: none !important; 
+                visibility: hidden !important; 
+            }
+
+            /* Hide real textareas; show their clones */
+            textarea { display: none !important; }
+            .textarea-print {
+                display: block;
+                white-space: pre-wrap;
+                border: 1px solid #bdbdbd;
+                border-radius: 8px;
+                padding: 6pt 8pt;
+                min-height: 20pt;
+                background: #fff;
+                font: inherit;
+            }
+
+            /* Force a 5-column grid: team | score | VS | score | team */
+            .scoreboard {
+                display: grid !important;
+                grid-template-columns: 1fr 80pt auto 80pt 1fr !important;
+                align-items: center !important;
+                justify-items: center !important;
+                width: 100% !important;
+                table-layout: fixed !important;
+                gap: 0 !important;
+            }
+            .scoreboard input[type="text"],
+            .scoreboard input[type="number"],
+            .scoreboard .vs {
+                display: block !important;
+                width: 100% !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                text-align: center !important;
+                line-height: 1.2 !important;
+                font-size: 11pt !important;
+                border: none !important;
+                background: transparent !important;
+                box-shadow: none !important;
+            }
+
+            /* Keep coach field with its table and make it stand out */
+            .esame-block { page-break-inside: avoid; break-inside: avoid; }
+
+            .coach-field {
+                margin: 6pt 0 8pt 0 !important;
+            }
+            .coach-field label {
+                display: block;
+                font-weight: 700 !important;
+                font-size: 11pt !important;
+                margin-bottom: 4pt !important;
+            }
+            .coach-field input,
+            .coach-field textarea {
+                border: none !important;
+                box-shadow: none !important;
+                background: transparent !important;
+                padding: 0 !important;
+                font-weight: 600 !important;
+                font-size: 10.5pt !important;
+            }
+
+            /* Ensure table doesn't "swallow" the coach field; add top margin */
+            .esame-table {
+                width: 100% !important;
+                border-collapse: collapse !important;
+                table-layout: fixed !important;
+                margin-top: 6pt !important;
+            }
+            .esame-table th, .esame-table td {
+                border: 1px solid #444 !important;
+                padding: 6pt !important;
+                vertical-align: middle !important;
+            }
+            /* Inputs inside cells render as plain text for print clarity */
+            .esame-table input, .esame-table textarea, .esame-table select {
+                width: 100% !important;
+                border: none !important;
+                background: transparent !important;
+                box-shadow: none !important;
+                padding: 0 !important;
+                text-align: center !important;
+                font: inherit !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        Emre Acet Scouting
+    </div>
+
+    <!-- Toolbar -->
+    <div class="toolbar">
+        <div class="container">
+            <div class="toolbar-content">
+                <button class="toolbar-btn" onclick="newReport()">
+                    <span class="btn-icon">📄</span>
+                    Yeni
+                </button>
+                <button class="toolbar-btn" onclick="saveReport()">
+                    <span class="btn-icon">💾</span>
+                    Kaydet
+                </button>
+                <button class="toolbar-btn" onclick="openReportsModal()">
+                    <span class="btn-icon">📋</span>
+                    Raporlar
+                </button>
+                <div class="dropdown">
+                    <button class="toolbar-btn dropdown-btn" onclick="toggleExportDropdown()">
+                        <span class="btn-icon">📤</span>
+                        Dışa Aktar
+                        <span class="dropdown-arrow">▼</span>
+                    </button>
+                    <div class="dropdown-menu" id="exportDropdown">
+                        <button type="button" id="btnExportPdf">📄 PDF</button>
+                        <button onclick="exportToWord()">📝 Word (.doc)</button>
+                        <button onclick="exportToJSON()">💾 JSON İndir</button>
+                    </div>
+                </div>
+                <button class="toolbar-btn" onclick="importJSON()">
+                    <span class="btn-icon">📥</span>
+                    İçe Aktar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hidden file input for JSON import -->
+    <input type="file" id="jsonFileInput" accept=".json" style="display: none;" onchange="handleJSONImport(event)">
+
+    <!-- Reports Modal -->
+    <div class="modal" id="reportsModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Kaydedilmiş Raporlar</h3>
+                <button class="modal-close" onclick="closeReportsModal()">&times;</button>
+            </div>
+            <input type="text" class="search-box" id="reportSearch" placeholder="Rapor ara..." onkeyup="filterReports()">
+            <div class="reports-list" id="reportsList">
+                <!-- Reports will be populated here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast"></div>
+
+    <div class="container">
+        <!-- Section 1: OYUNCU İNCELEME -->
+        <div class="section">
+            <h2 class="section-title">OYUNCU İNCELEME</h2>
+            <div class="two-column">
+                <div>
+                    <div class="form-group">
+                        <label class="form-label">Genel Bakış</label>
+                        <textarea 
+                            class="form-textarea" 
+                            id="general-overview"
+                            placeholder="Pozisyon, rol, maç içi davranışlar, genel performans değerlendirmesi..."
+                            rows="6"
+                        ></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Oyuncunun Geliştirilmesi Gereken Teknik &amp; Taktik Alanları</label>
+                        <textarea 
+                            class="form-textarea" 
+                            id="development-areas"
+                            placeholder="Geliştirilmesi gereken teknik beceriler, taktik anlayış, pozisyon bilgisi..."
+                            rows="6"
+                        ></textarea>
+                    </div>
+                </div>
+                <div>
+                    <div class="form-group">
+                        <label class="form-label">Oyuncunun Teknik &amp; Taktik Güçlü Yanları</label>
+                        <textarea 
+                            class="form-textarea" 
+                            id="strengths"
+                            placeholder="Güçlü teknik beceriler, taktik zeka, oyun anlayışı, öne çıkan yetenekler..."
+                            rows="6"
+                        ></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Oyuncunun Fiziksel ve Zihinsel Özellikleri</label>
+                        <textarea 
+                            class="form-textarea" 
+                            id="physical-mental"
+                            placeholder="Fiziksel kondisyon, hız, güç, zihinsel dayanıklılık, konsantrasyon..."
+                            rows="6"
+                        ></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 2: MAÇ RAPORU -->
+        <div class="section">
+            <h2 class="section-title">MAÇ RAPORU</h2>
+            
+            <!-- Scoreboard -->
+            <div class="scoreboard">
+                <input type="text" class="team-left" id="left-team" placeholder="Sol Takım">
+                <input type="number" class="score-left" id="left-score" min="0" value="0">
+                <span class="vs">VS</span>
+                <input type="number" class="score-right" id="right-score" min="0" value="0">
+                <input type="text" class="team-right" id="right-team" placeholder="Sağ Takım">
+            </div>
+
+            <!-- Scout Name -->
+            <div class="form-group">
+                <label class="form-label">Scout İsmi</label>
+                <input type="text" class="form-input scout-name" id="scout-name" placeholder="Scout adı ve soyadı">
+            </div>
+
+            <!-- Match Details Grid -->
+            <div class="two-column">
+                <div>
+                    <div class="form-group">
+                        <label class="form-label">Turnuva İsmi</label>
+                        <input type="text" class="form-input" id="tournament" placeholder="Turnuva veya lig adı">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Stadyum</label>
+                        <input type="text" class="form-input" id="stadium" placeholder="Stadyum adı">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Başlangıç Saati</label>
+                        <input type="time" class="form-input" id="start-time">
+                    </div>
+                </div>
+                <div>
+                    <div class="form-group">
+                        <label class="form-label">Hava Koşulları</label>
+                        <input type="text" class="form-input" id="weather" placeholder="Güneşli, yağmurlu, bulutlu...">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Saha Koşulları</label>
+                        <input type="text" class="form-input" id="pitch-conditions" placeholder="Saha durumu, zemin kalitesi...">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Tarih</label>
+                        <input type="date" class="form-input" id="match-date">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3: ESAME LİSTESİ -->
+        <div class="section">
+            <h2 class="section-title">ESAME LİSTESİ</h2>
+            
+            <!-- Scoreboard (Duplicate) -->
+            <div class="scoreboard">
+                <input type="text" class="team-left" id="left-team-2" placeholder="Sol Takım">
+                <input type="number" class="score-left" id="left-score-2" min="0" value="0">
+                <span class="vs">VS</span>
+                <input type="number" class="score-right" id="right-score-2" min="0" value="0">
+                <input type="text" class="team-right" id="right-team-2" placeholder="Sağ Takım">
+            </div>
+
+            <!-- Team Tables -->
+            <div class="team-tables esame-columns">
+                <!-- Left Team Table -->
+                <div class="esame-block">
+                    <div class="coach-field">
+                        <label class="form-label" for="left-tech-director">Teknik Direktör</label>
+                        <input type="text" class="form-input" id="left-tech-director" placeholder="Teknik direktör adı">
+                    </div>
+                    <table class="team-table esame-table">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Oyuncu</th>
+                                <th>Değiş.</th>
+                                <th>Gol</th>
+                                <th>Puan</th>
+                            </tr>
+                        </thead>
+                        <tbody id="left-team-table">
+                            <!-- Rows will be generated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Right Team Table -->
+                <div class="esame-block">
+                    <div class="coach-field">
+                        <label class="form-label" for="right-tech-director">Teknik Direktör</label>
+                        <input type="text" class="form-input" id="right-tech-director" placeholder="Teknik direktör adı">
+                    </div>
+                    <table class="team-table esame-table">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Oyuncu</th>
+                                <th>Değiş.</th>
+                                <th>Gol</th>
+                                <th>Puan</th>
+                            </tr>
+                        </thead>
+                        <tbody id="right-team-table">
+                            <!-- Rows will be generated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Global variables
+        let currentReportId = null;
+        let allReports = [];
+
+        // Data structures for temporary storage
+        const scoutingData = {
+            playerReview: {
+                generalOverview: '',
+                technicalTacticalStrengths: '',
+                developmentAreas: '',
+                physicalMentalCharacteristics: ''
+            },
+            matchReport: {
+                leftTeamName: '',
+                leftTeamScore: 0,
+                rightTeamName: '',
+                rightTeamScore: 0,
+                scoutName: '',
+                tournamentName: '',
+                weatherConditions: '',
+                stadium: '',
+                pitchConditions: '',
+                matchDate: '',
+                startTime: ''
+            },
+            teamSheet: {
+                leftTechnicalDirector: '',
+                rightTechnicalDirector: '',
+                leftTeamPlayers: [],
+                rightTeamPlayers: []
+            }
+        };
+
+        // LocalStorage management functions
+        function generateReportId() {
+            const timestamp = Date.now();
+            const random = Math.random().toString(36).substr(2, 5);
+            return `eascout_${timestamp}_${random}`;
+        }
+
+        function getReportsIndex() {
+            const index = localStorage.getItem('eascout_index');
+            return index ? JSON.parse(index) : [];
+        }
+
+        function saveReportsIndex(index) {
+            localStorage.setItem('eascout_index', JSON.stringify(index));
+        }
+
+        function saveReportToStorage(reportData) {
+            const reportKey = `eascout_reports:${reportData.id}`;
+            localStorage.setItem(reportKey, JSON.stringify(reportData));
+            
+            // Update index
+            const index = getReportsIndex();
+            const existingIndex = index.findIndex(item => item.id === reportData.id);
+            
+            const indexItem = {
+                id: reportData.id,
+                title: generateReportTitle(reportData),
+                date: new Date(reportData.updatedAt).toLocaleDateString('tr-TR')
+            };
+            
+            if (existingIndex >= 0) {
+                index[existingIndex] = indexItem;
+            } else {
+                index.unshift(indexItem);
+            }
+            
+            saveReportsIndex(index);
+        }
+
+        function loadReportFromStorage(reportId) {
+            const reportKey = `eascout_reports:${reportId}`;
+            const reportData = localStorage.getItem(reportKey);
+            return reportData ? JSON.parse(reportData) : null;
+        }
+
+        function deleteReportFromStorage(reportId) {
+            const reportKey = `eascout_reports:${reportId}`;
+            localStorage.removeItem(reportKey);
+            
+            // Update index
+            const index = getReportsIndex();
+            const filteredIndex = index.filter(item => item.id !== reportId);
+            saveReportsIndex(filteredIndex);
+        }
+
+        function generateReportTitle(reportData) {
+            const leftTeam = reportData.matchReport.leftTeam || reportData.esame.leftTeam || 'Takım 1';
+            const rightTeam = reportData.matchReport.rightTeam || reportData.esame.rightTeam || 'Takım 2';
+            const date = reportData.matchReport.tarih || new Date().toLocaleDateString('tr-TR');
+            const scoutName = reportData.matchReport.scoutIsmi;
+            
+            if (scoutName) {
+                return `${leftTeam} vs ${rightTeam} - ${scoutName}`;
+            }
+            return `${leftTeam} vs ${rightTeam} - ${date}`;
+        }
+
+        // Initialize player arrays
+        for (let i = 0; i < 16; i++) {
+            scoutingData.teamSheet.leftTeamPlayers.push({
+                number: '',
+                name: '',
+                substitution: '',
+                goals: '',
+                rating: ''
+            });
+            scoutingData.teamSheet.rightTeamPlayers.push({
+                number: '',
+                name: '',
+                substitution: '',
+                goals: '',
+                rating: ''
+            });
+        }
+
+        // Generate table rows
+        function generateTableRows(tableId, teamSide) {
+            const tbody = document.getElementById(tableId);
+            const players = teamSide === 'left' ? scoutingData.teamSheet.leftTeamPlayers : scoutingData.teamSheet.rightTeamPlayers;
+            
+            for (let i = 0; i < 16; i++) {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td><input type="text" data-team="${teamSide}" data-player="${i}" data-field="number" placeholder="${i + 1}"></td>
+                    <td><input type="text" data-team="${teamSide}" data-player="${i}" data-field="name" placeholder="Oyuncu adı"></td>
+                    <td><input type="text" data-team="${teamSide}" data-player="${i}" data-field="substitution" placeholder="Değişiklik"></td>
+                    <td><input type="text" data-team="${teamSide}" data-player="${i}" data-field="goals" placeholder="Gol"></td>
+                    <td><input type="text" data-team="${teamSide}" data-player="${i}" data-field="rating" placeholder="Puan"></td>
+                `;
+                tbody.appendChild(row);
+            }
+        }
+
+        // Sync scoreboard data
+        function syncScoreboard() {
+            const leftTeam1 = document.getElementById('left-team');
+            const leftTeam2 = document.getElementById('left-team-2');
+            const rightTeam1 = document.getElementById('right-team');
+            const rightTeam2 = document.getElementById('right-team-2');
+            const leftScore1 = document.getElementById('left-score');
+            const leftScore2 = document.getElementById('left-score-2');
+            const rightScore1 = document.getElementById('right-score');
+            const rightScore2 = document.getElementById('right-score-2');
+
+            // Sync team names
+            leftTeam1.addEventListener('input', () => {
+                leftTeam2.value = leftTeam1.value;
+                scoutingData.matchReport.leftTeamName = leftTeam1.value;
+            });
+            leftTeam2.addEventListener('input', () => {
+                leftTeam1.value = leftTeam2.value;
+                scoutingData.matchReport.leftTeamName = leftTeam2.value;
+            });
+            rightTeam1.addEventListener('input', () => {
+                rightTeam2.value = rightTeam1.value;
+                scoutingData.matchReport.rightTeamName = rightTeam1.value;
+            });
+            rightTeam2.addEventListener('input', () => {
+                rightTeam1.value = rightTeam2.value;
+                scoutingData.matchReport.rightTeamName = rightTeam2.value;
+            });
+
+            // Sync scores
+            leftScore1.addEventListener('input', () => {
+                leftScore2.value = leftScore1.value;
+                scoutingData.matchReport.leftTeamScore = parseInt(leftScore1.value) || 0;
+            });
+            leftScore2.addEventListener('input', () => {
+                leftScore1.value = leftScore2.value;
+                scoutingData.matchReport.leftTeamScore = parseInt(leftScore2.value) || 0;
+            });
+            rightScore1.addEventListener('input', () => {
+                rightScore2.value = rightScore1.value;
+                scoutingData.matchReport.rightTeamScore = parseInt(rightScore1.value) || 0;
+            });
+            rightScore2.addEventListener('input', () => {
+                rightScore1.value = rightScore2.value;
+                scoutingData.matchReport.rightTeamScore = parseInt(rightScore2.value) || 0;
+            });
+        }
+
+        // Form data collection and population functions
+        function collectForm() {
+            const formData = {
+                id: currentReportId || generateReportId(),
+                createdAt: currentReportId ? loadReportFromStorage(currentReportId)?.createdAt || Date.now() : Date.now(),
+                updatedAt: Date.now(),
+                header: "Emre Acet Scouting",
+                playerReview: {
+                    genelBakis: document.getElementById('general-overview').value,
+                    gucluYonlar: document.getElementById('strengths').value,
+                    gelistirilmesiGerekenler: document.getElementById('development-areas').value,
+                    fizikZihin: document.getElementById('physical-mental').value
+                },
+                matchReport: {
+                    leftTeam: document.getElementById('left-team').value,
+                    leftScore: parseInt(document.getElementById('left-score').value) || 0,
+                    rightScore: parseInt(document.getElementById('right-score').value) || 0,
+                    rightTeam: document.getElementById('right-team').value,
+                    scoutIsmi: document.getElementById('scout-name').value,
+                    turnuva: document.getElementById('tournament').value,
+                    stadyum: document.getElementById('stadium').value,
+                    hava: document.getElementById('weather').value,
+                    saha: document.getElementById('pitch-conditions').value,
+                    baslangicSaati: document.getElementById('start-time').value,
+                    tarih: document.getElementById('match-date').value
+                },
+                esame: {
+                    leftTeam: document.getElementById('left-team-2').value,
+                    leftScore: parseInt(document.getElementById('left-score-2').value) || 0,
+                    rightScore: parseInt(document.getElementById('right-score-2').value) || 0,
+                    rightTeam: document.getElementById('right-team-2').value,
+                    coachLeft: document.getElementById('left-tech-director').value,
+                    coachRight: document.getElementById('right-tech-director').value,
+                    leftTable: [],
+                    rightTable: []
+                }
+            };
+
+            // Collect left team table data
+            for (let i = 0; i < 16; i++) {
+                const playerData = {
+                    no: document.querySelector(`[data-team="left"][data-player="${i}"][data-field="number"]`).value,
+                    oyuncu: document.querySelector(`[data-team="left"][data-player="${i}"][data-field="name"]`).value,
+                    degis: document.querySelector(`[data-team="left"][data-player="${i}"][data-field="substitution"]`).value,
+                    gol: document.querySelector(`[data-team="left"][data-player="${i}"][data-field="goals"]`).value,
+                    puan: document.querySelector(`[data-team="left"][data-player="${i}"][data-field="rating"]`).value
+                };
+                formData.esame.leftTable.push(playerData);
+            }
+
+            // Collect right team table data
+            for (let i = 0; i < 16; i++) {
+                const playerData = {
+                    no: document.querySelector(`[data-team="right"][data-player="${i}"][data-field="number"]`).value,
+                    oyuncu: document.querySelector(`[data-team="right"][data-player="${i}"][data-field="name"]`).value,
+                    degis: document.querySelector(`[data-team="right"][data-player="${i}"][data-field="substitution"]`).value,
+                    gol: document.querySelector(`[data-team="right"][data-player="${i}"][data-field="goals"]`).value,
+                    puan: document.querySelector(`[data-team="right"][data-player="${i}"][data-field="rating"]`).value
+                };
+                formData.esame.rightTable.push(playerData);
+            }
+
+            return formData;
+        }
+
+        function fillForm(reportData) {
+            if (!reportData) return;
+
+            currentReportId = reportData.id;
+
+            // Fill player review section
+            document.getElementById('general-overview').value = reportData.playerReview.genelBakis || '';
+            document.getElementById('strengths').value = reportData.playerReview.gucluYonlar || '';
+            document.getElementById('development-areas').value = reportData.playerReview.gelistirilmesiGerekenler || '';
+            document.getElementById('physical-mental').value = reportData.playerReview.fizikZihin || '';
+
+            // Fill match report section
+            document.getElementById('left-team').value = reportData.matchReport.leftTeam || '';
+            document.getElementById('left-score').value = reportData.matchReport.leftScore || 0;
+            document.getElementById('right-score').value = reportData.matchReport.rightScore || 0;
+            document.getElementById('right-team').value = reportData.matchReport.rightTeam || '';
+            document.getElementById('scout-name').value = reportData.matchReport.scoutIsmi || '';
+            document.getElementById('tournament').value = reportData.matchReport.turnuva || '';
+            document.getElementById('stadium').value = reportData.matchReport.stadyum || '';
+            document.getElementById('weather').value = reportData.matchReport.hava || '';
+            document.getElementById('pitch-conditions').value = reportData.matchReport.saha || '';
+            document.getElementById('start-time').value = reportData.matchReport.baslangicSaati || '';
+            document.getElementById('match-date').value = reportData.matchReport.tarih || '';
+
+            // Fill esame section
+            document.getElementById('left-team-2').value = reportData.esame.leftTeam || '';
+            document.getElementById('left-score-2').value = reportData.esame.leftScore || 0;
+            document.getElementById('right-score-2').value = reportData.esame.rightScore || 0;
+            document.getElementById('right-team-2').value = reportData.esame.rightTeam || '';
+            document.getElementById('left-tech-director').value = reportData.esame.coachLeft || '';
+            document.getElementById('right-tech-director').value = reportData.esame.coachRight || '';
+
+            // Fill left team table
+            if (reportData.esame.leftTable) {
+                reportData.esame.leftTable.forEach((player, index) => {
+                    if (index < 16) {
+                        document.querySelector(`[data-team="left"][data-player="${index}"][data-field="number"]`).value = player.no || '';
+                        document.querySelector(`[data-team="left"][data-player="${index}"][data-field="name"]`).value = player.oyuncu || '';
+                        document.querySelector(`[data-team="left"][data-player="${index}"][data-field="substitution"]`).value = player.degis || '';
+                        document.querySelector(`[data-team="left"][data-player="${index}"][data-field="goals"]`).value = player.gol || '';
+                        document.querySelector(`[data-team="left"][data-player="${index}"][data-field="rating"]`).value = player.puan || '';
+                    }
+                });
+            }
+
+            // Fill right team table
+            if (reportData.esame.rightTable) {
+                reportData.esame.rightTable.forEach((player, index) => {
+                    if (index < 16) {
+                        document.querySelector(`[data-team="right"][data-player="${index}"][data-field="number"]`).value = player.no || '';
+                        document.querySelector(`[data-team="right"][data-player="${index}"][data-field="name"]`).value = player.oyuncu || '';
+                        document.querySelector(`[data-team="right"][data-player="${index}"][data-field="substitution"]`).value = player.degis || '';
+                        document.querySelector(`[data-team="right"][data-player="${index}"][data-field="goals"]`).value = player.gol || '';
+                        document.querySelector(`[data-team="right"][data-player="${index}"][data-field="rating"]`).value = player.puan || '';
+                    }
+                });
+            }
+
+            // Update URL hash
+            window.location.hash = reportData.id;
+        }
+
+        function clearForm() {
+            currentReportId = null;
+            
+            // Clear all text inputs and textareas
+            document.querySelectorAll('input[type="text"], input[type="time"], input[type="date"], textarea').forEach(input => {
+                input.value = '';
+            });
+            
+            // Reset scores to 0
+            document.querySelectorAll('input[type="number"]').forEach(input => {
+                input.value = 0;
+            });
+            
+            // Set current date as default
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('match-date').value = today;
+            
+            // Clear URL hash
+            window.location.hash = '';
+        }
+
+        // Add event listeners for data binding
+        function bindFormData() {
+            // Player Review section
+            document.getElementById('general-overview').addEventListener('input', (e) => {
+                scoutingData.playerReview.generalOverview = e.target.value;
+            });
+            document.getElementById('strengths').addEventListener('input', (e) => {
+                scoutingData.playerReview.technicalTacticalStrengths = e.target.value;
+            });
+            document.getElementById('development-areas').addEventListener('input', (e) => {
+                scoutingData.playerReview.developmentAreas = e.target.value;
+            });
+            document.getElementById('physical-mental').addEventListener('input', (e) => {
+                scoutingData.playerReview.physicalMentalCharacteristics = e.target.value;
+            });
+
+            // Match Report section
+            document.getElementById('scout-name').addEventListener('input', (e) => {
+                scoutingData.matchReport.scoutName = e.target.value;
+            });
+            document.getElementById('tournament').addEventListener('input', (e) => {
+                scoutingData.matchReport.tournamentName = e.target.value;
+            });
+            document.getElementById('weather').addEventListener('input', (e) => {
+                scoutingData.matchReport.weatherConditions = e.target.value;
+            });
+            document.getElementById('stadium').addEventListener('input', (e) => {
+                scoutingData.matchReport.stadium = e.target.value;
+            });
+            document.getElementById('pitch-conditions').addEventListener('input', (e) => {
+                scoutingData.matchReport.pitchConditions = e.target.value;
+            });
+            document.getElementById('match-date').addEventListener('input', (e) => {
+                scoutingData.matchReport.matchDate = e.target.value;
+            });
+            document.getElementById('start-time').addEventListener('input', (e) => {
+                scoutingData.matchReport.startTime = e.target.value;
+            });
+
+            // Technical Directors
+            document.getElementById('left-tech-director').addEventListener('input', (e) => {
+                scoutingData.teamSheet.leftTechnicalDirector = e.target.value;
+            });
+            document.getElementById('right-tech-director').addEventListener('input', (e) => {
+                scoutingData.teamSheet.rightTechnicalDirector = e.target.value;
+            });
+
+            // Team table inputs
+            document.addEventListener('input', (e) => {
+                if (e.target.dataset.team && e.target.dataset.player !== undefined) {
+                    const team = e.target.dataset.team;
+                    const playerIndex = parseInt(e.target.dataset.player);
+                    const field = e.target.dataset.field;
+                    
+                    if (team === 'left') {
+                        scoutingData.teamSheet.leftTeamPlayers[playerIndex][field] = e.target.value;
+                    } else {
+                        scoutingData.teamSheet.rightTeamPlayers[playerIndex][field] = e.target.value;
+                    }
+                }
+            });
+        }
+
+        // Toolbar functionality
+        function newReport() {
+            if (confirm('Yeni rapor oluşturmak istediğinizden emin misiniz? Kaydedilmemiş değişiklikler kaybolacak.')) {
+                clearForm();
+                showToast('Yeni rapor oluşturuldu');
+            }
+        }
+
+        function saveReport() {
+            const reportData = collectForm();
+            saveReportToStorage(reportData);
+            currentReportId = reportData.id;
+            window.location.hash = reportData.id;
+            showToast('Rapor kaydedildi');
+        }
+
+        function openReportsModal() {
+            loadReportsList();
+            document.getElementById('reportsModal').classList.add('show');
+        }
+
+        function closeReportsModal() {
+            document.getElementById('reportsModal').classList.remove('show');
+        }
+
+        function toggleExportDropdown() {
+            const dropdown = document.querySelector('.dropdown');
+            dropdown.classList.toggle('active');
+        }
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.dropdown')) {
+                document.querySelector('.dropdown').classList.remove('active');
+            }
+        });
+
+        // Export functions
+        function exportToPDF() {
+            document.querySelector('.dropdown').classList.remove('active');
+            window.print();
+        }
+
+        function exportToWord() {
+            document.querySelector('.dropdown').classList.remove('active');
+            const reportData = collectForm();
+            const wordContent = generateWordContent(reportData);
+            
+            const blob = new Blob([wordContent], {
+                type: 'application/msword'
+            });
+            
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `Scouting_Report_${new Date().toISOString().split('T')[0]}.doc`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            
+            showToast('Word dosyası indirildi');
+        }
+
+        function exportToJSON() {
+            document.querySelector('.dropdown').classList.remove('active');
+            const reportData = collectForm();
+            
+            const blob = new Blob([JSON.stringify(reportData, null, 2)], {
+                type: 'application/json'
+            });
+            
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `report_${reportData.id}.json`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            
+            showToast('JSON dosyası indirildi');
+        }
+
+        function importJSON() {
+            document.getElementById('jsonFileInput').click();
+        }
+
+        function handleJSONImport(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    const reportData = JSON.parse(e.target.result);
+                    
+                    if (confirm('Mevcut form verilerinin üzerine yazılacak. Devam etmek istiyor musunuz?')) {
+                        fillForm(reportData);
+                        showToast('JSON dosyası başarıyla yüklendi');
+                    }
+                } catch (error) {
+                    alert('Geçersiz JSON dosyası!');
+                }
+            };
+            reader.readAsText(file);
+            
+            // Reset file input
+            event.target.value = '';
+        }
+
+        // Reports modal functions
+        function loadReportsList() {
+            const index = getReportsIndex();
+            allReports = index;
+            displayReports(index);
+        }
+
+        function displayReports(reports) {
+            const reportsList = document.getElementById('reportsList');
+            
+            if (reports.length === 0) {
+                reportsList.innerHTML = '<p style="text-align: center; color: #666; padding: 20px;">Henüz kaydedilmiş rapor bulunmuyor.</p>';
+                return;
+            }
+            
+            reportsList.innerHTML = reports.map(report => `
+                <div class="report-item">
+                    <div class="report-info">
+                        <h4>${report.title}</h4>
+                        <p>${report.date}</p>
+                    </div>
+                    <div class="report-actions">
+                        <button class="action-btn open" onclick="openReport('${report.id}')">Aç</button>
+                        <button class="action-btn copy" onclick="duplicateReport('${report.id}')">Kopya Oluştur</button>
+                        <button class="action-btn delete" onclick="deleteReport('${report.id}')">Sil</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function filterReports() {
+            const searchTerm = document.getElementById('reportSearch').value.toLowerCase();
+            const filteredReports = allReports.filter(report => 
+                report.title.toLowerCase().includes(searchTerm)
+            );
+            displayReports(filteredReports);
+        }
+
+        function openReport(reportId) {
+            const reportData = loadReportFromStorage(reportId);
+            if (reportData) {
+                fillForm(reportData);
+                closeReportsModal();
+                showToast('Rapor yüklendi');
+            }
+        }
+
+        function duplicateReport(reportId) {
+            const reportData = loadReportFromStorage(reportId);
+            if (reportData) {
+                // Create new report with new ID
+                const newReportData = {
+                    ...reportData,
+                    id: generateReportId(),
+                    createdAt: Date.now(),
+                    updatedAt: Date.now()
+                };
+                
+                saveReportToStorage(newReportData);
+                loadReportsList();
+                showToast('Rapor kopyalandı');
+            }
+        }
+
+        function deleteReport(reportId) {
+            if (confirm('Bu raporu silmek istediğinizden emin misiniz?')) {
+                deleteReportFromStorage(reportId);
+                loadReportsList();
+                showToast('Rapor silindi');
+                
+                // If current report is deleted, clear form
+                if (currentReportId === reportId) {
+                    clearForm();
+                }
+            }
+        }
+
+        // Utility functions
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.add('show');
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        /* === helpers used by Word export === */
+        function getEsameRowsFromDom(tableEl) {
+            const rows = [];
+            tableEl.querySelectorAll('tbody tr').forEach(tr => {
+                const cells = Array.from(tr.querySelectorAll('input, textarea, select')).map(el => (el.value || '').trim());
+                // cells order expected: [no, oyuncu, degis, gol, puan]
+                const [no, oyuncu, degis, gol, puan] = cells;
+                const hasAny = [no, oyuncu, degis, gol, puan].some(v => v !== '');
+                if (hasAny) {
+                    rows.push({ no, oyuncu, degis, gol, puan });
+                }
+            });
+            return rows;
+        }
+
+        function renderEsameTableHtml(titleLeft, coachName, rows) {
+            // titleLeft can be "Fenerbahçe - Teknik Direktör: Domenico Tedesco"
+            const thead = `
+                <thead>
+                    <tr>
+                        <th>No</th><th>Oyuncu</th><th>Değiş.</th><th>Gol</th><th>Puan</th>
+                    </tr>
+                </thead>`;
+            const body = rows.map(r => `
+                <tr>
+                    <td>${r.no || ''}</td>
+                    <td>${r.oyuncu || ''}</td>
+                    <td>${r.degis || ''}</td>
+                    <td>${r.gol || ''}</td>
+                    <td>${r.puan || ''}</td>
+                </tr>`).join('');
+
+            return `
+                <h4 style="margin:0 0 6px 0">${titleLeft} - <span style="font-weight:600">Teknik Direktör:</span> ${coachName || '-'}</h4>
+                <table border="1" cellspacing="0" cellpadding="6" style="border-collapse:collapse;width:100%">
+                    ${thead}
+                    <tbody>${body}</tbody>
+                </table>`;
+        }
+
+        function generateWordContent(reportData) {
+            return `
+                <html>
+                <head>
+                    <meta charset="UTF-8">
+                    <title>Scouting Report</title>
+                    <style>
+                        body { font-family: Arial, sans-serif; margin: 20px; }
+                        h1 { color: #5b3a8e; text-align: center; }
+                        h2 { color: #5b3a8e; border-bottom: 2px solid #5b3a8e; padding-bottom: 5px; }
+                        table { width: 100%; border-collapse: collapse; margin: 10px 0; }
+                        th, td { border: 1px solid #333; padding: 8px; text-align: left; }
+                        th { background-color: #5b3a8e; color: white; }
+                        .match-info { display: flex; justify-content: space-between; margin: 10px 0; }
+                    </style>
+                </head>
+                <body>
+                    <h1>${reportData.header}</h1>
+                    
+                    <h2>OYUNCU İNCELEME</h2>
+                    <p><strong>Genel Bakış:</strong> ${reportData.playerReview.genelBakis}</p>
+                    <p><strong>Güçlü Yanlar:</strong> ${reportData.playerReview.gucluYonlar}</p>
+                    <p><strong>Geliştirilmesi Gerekenler:</strong> ${reportData.playerReview.gelistirilmesiGerekenler}</p>
+                    <p><strong>Fizik ve Zihin:</strong> ${reportData.playerReview.fizikZihin}</p>
+                    
+                    <h2>MAÇ RAPORU</h2>
+                    <div class="match-info">
+                        <p><strong>Maç:</strong> ${reportData.matchReport.leftTeam} ${reportData.matchReport.leftScore} - ${reportData.matchReport.rightScore} ${reportData.matchReport.rightTeam}</p>
+                        <p><strong>Tarih:</strong> ${reportData.matchReport.tarih}</p>
+                    </div>
+                    <p><strong>Scout:</strong> ${reportData.matchReport.scoutIsmi}</p>
+                    <p><strong>Turnuva:</strong> ${reportData.matchReport.turnuva}</p>
+                    <p><strong>Stadyum:</strong> ${reportData.matchReport.stadyum}</p>
+                    <p><strong>Hava:</strong> ${reportData.matchReport.hava}</p>
+                    <p><strong>Saha:</strong> ${reportData.matchReport.saha}</p>
+                    
+                    <h2>ESAME LİSTESİ</h2>
+                    <p><strong>Maç:</strong> ${reportData.esame.leftTeam} ${reportData.esame.leftScore} - ${reportData.esame.rightScore} ${reportData.esame.rightTeam}</p>
+                    
+                    ${(() => {
+                        // grab source DOM for ESAME tables
+                        const leftTbl = document.querySelector('#left-team-table')?.closest('table');
+                        const rightTbl = document.querySelector('#right-team-table')?.closest('table');
+                        const leftTeam = reportData.esame.leftTeam || 'Sol Takım';
+                        const rightTeam = reportData.esame.rightTeam || 'Sağ Takım';
+                        const coachLeft = reportData.esame.coachLeft || '';
+                        const coachRight = reportData.esame.coachRight || '';
+                        
+                        const leftRows = leftTbl ? getEsameRowsFromDom(leftTbl) : [];
+                        const rightRows = rightTbl ? getEsameRowsFromDom(rightTbl) : [];
+                        
+                        // build clean HTML without empty rows
+                        const leftHtml = renderEsameTableHtml(leftTeam, coachLeft, leftRows);
+                        const rightHtml = renderEsameTableHtml(rightTeam, coachRight, rightRows);
+                        
+                        return leftHtml + '<br/>' + rightHtml;
+                    })()}
+                </body>
+                </html>
+            `;
+        }
+
+        // Initialize the application
+        document.addEventListener('DOMContentLoaded', () => {
+            generateTableRows('left-team-table', 'left');
+            generateTableRows('right-team-table', 'right');
+            syncScoreboard();
+            bindFormData();
+            
+            // Set current date as default
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('match-date').value = today;
+            scoutingData.matchReport.matchDate = today;
+            
+            // Check for hash in URL and load report if exists
+            const hash = window.location.hash.substring(1);
+            if (hash) {
+                const reportData = loadReportFromStorage(hash);
+                if (reportData) {
+                    fillForm(reportData);
+                }
+            }
+        });
+
+        // Console debug function for development
+        function debugData() {
+            console.log('Current Scouting Data:', scoutingData);
+        }
+
+        // Make debug function available globally
+        window.debugData = debugData;
+
+        // Print mode functionality for hiding empty ESAME rows
+         (function () {
+             // helper: returns true if at least one input in the row has a value
+             function rowHasData(tr) {
+                 const inputs = tr.querySelectorAll('input, textarea, select');
+                 for (const el of inputs) {
+                     if ((el.type === 'number' && el.value !== '') || 
+                         (el.type !== 'number' && el.value && el.value.trim() !== '')) {
+                         return true;
+                     }
+                 }
+                 return false;
+             }
+
+             function markEmptyEsameRows() {
+                 const tables = document.querySelectorAll('.esame-table');
+                 tables.forEach(table => {
+                     const rows = table.querySelectorAll('tbody tr');
+                     rows.forEach(tr => {
+                         if (rowHasData(tr)) {
+                             tr.classList.remove('print-empty-row');
+                         } else {
+                             tr.classList.add('print-empty-row');
+                         }
+                     });
+                 });
+             }
+
+             // Mark empty rows before print
+             window.addEventListener('beforeprint', markEmptyEsameRows);
+         })();
+
+         // Textarea print enhancement
+         (function () {
+             // Create print clones for all textareas (so long text prints fully)
+             function createTextareaPrintClones() {
+                 document.querySelectorAll('textarea').forEach(ta => {
+                     // Avoid duplicating
+                     if (ta.nextElementSibling && ta.nextElementSibling.classList?.contains('textarea-print')) return;
+                     const div = document.createElement('div');
+                     div.className = 'textarea-print';
+                     // Preserve line breaks
+                     div.textContent = ta.value || '';
+                     ta.after(div);
+                 });
+             }
+
+             // Remove print clones after printing
+             function removeTextareaPrintClones() {
+                 document.querySelectorAll('.textarea-print').forEach(el => el.remove());
+             }
+
+             function beforePrintTextareas() { createTextareaPrintClones(); }
+             function afterPrintTextareas()  { removeTextareaPrintClones(); }
+
+             // Hook into print lifecycle
+             window.addEventListener('beforeprint', beforePrintTextareas);
+             window.addEventListener('afterprint',  afterPrintTextareas);
+
+             // If you have a custom export function that calls window.print(),
+             // call beforePrintTextareas() just before printing as well.
+             window.prepareTextareaPrint = beforePrintTextareas;
+         })();
+
+         // Direct PDF export function (no popup)
+         (function () {
+             // Optional helpers you already added earlier; guard if undefined.
+             function safe(fn){ try{ typeof fn === 'function' && fn(); }catch(e){} }
+
+             // If you created these earlier, they'll run; otherwise harmless.
+             function prePrintAll() {
+                 // create textarea clones so long text prints fully
+                 safe(window.prepareTextareaPrint);
+                 // mark empty ESAME rows to hide in print
+                 safe(window.beforePrint);       // if you used a shared beforePrint
+                 safe(window.markEmptyEsameRows);
+             }
+             function postPrintAll() {
+                 // clean up anything added for print
+                 safe(window.afterPrint);
+                 // remove textarea clones if you used them
+                 try {
+                     document.querySelectorAll('.textarea-print').forEach(n => n.remove());
+                 } catch(e){}
+             }
+
+             // Reliable hooks across browsers
+             window.addEventListener('afterprint', postPrintAll);
+
+             // Main: export PDF NOW (no popup)
+             function exportPdfNow() {
+                 // Close dropdown first
+                 document.querySelector('.dropdown').classList.remove('active');
+                 
+                 prePrintAll();
+                 // Give the DOM a tick to apply print classes before opening dialog
+                 setTimeout(() => window.print(), 50);
+             }
+
+             // Bind button
+             const btn = document.getElementById('btnExportPdf');
+             if (btn) btn.addEventListener('click', exportPdfNow);
+
+             // Also expose if you trigger from a menu item
+             window.exportPdfNow = exportPdfNow;
+         })();
+     </script>
+ </body>
+ </html>
