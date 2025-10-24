@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Emre Acet Scouting - Oyuncu İnceleme Raporu</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css">
     <style>
         /* Reset and Base Styles */
         * {
@@ -727,6 +728,176 @@
             }
         }
     </style>
+
+    <style>
+        /* ===== MOBILE-ONLY PATCH: desktop & print remain unchanged ===== */
+        @media (max-width: 600px) {
+            /* 1) Prevent page-level horizontal scroll */
+            html, body { overflow-x: hidden; }
+
+            /* 2) Toolbar actions: single row with horizontal scrolling if needed */
+            .toolbar .row {
+                display: block !important;
+                overflow-x: auto !important;
+                white-space: nowrap !important;
+                -webkit-overflow-scrolling: touch;
+                padding-bottom: 6px;
+                margin-bottom: 6px;
+            }
+            .toolbar .btn, .toolbar .dropdown, .toolbar button {
+                display: inline-flex !important;
+                vertical-align: top;
+                margin-right: 8px;
+                margin-bottom: 6px;
+                font-size: 14px;
+                padding: 8px 10px;
+            }
+
+            /* 3) Match Report: stack vertically, keep everything centered */
+            .scoreboard {
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                justify-content: center !important;
+                gap: 8px !important;
+                text-align: center !important;
+            }
+            /* team names: full width */
+            .scoreboard input[type="text"] {
+                width: 100% !important;
+                max-width: 420px;
+                text-align: center;
+            }
+            /* scores: slightly narrower, centered, below their team names */
+            .scoreboard input[type="number"] {
+                width: 80px !important;
+                text-align: center;
+                font-weight: 700;
+            }
+            /* VS on its own line */
+            .scoreboard .vs { margin: 4px 0; font-weight: 700; }
+
+            /* 4) ESAME: stack columns, make coach field and table fit */
+            .esame-columns {
+                display: block !important;
+            }
+            .esame-block {
+                width: 100% !important;
+                margin: 0 0 16px 0 !important;
+            }
+            .coach-field label { display:block; font-weight:600; margin-bottom:6px; }
+            .coach-field input, .coach-field textarea, .coach-field select {
+                width: 100% !important;
+                max-width: 100% !important;
+                box-sizing: border-box;
+            }
+
+            /* Tables fit screen; wrap content if needed */
+            .table-wrap {
+                overflow-x: hidden !important;   /* keep the page from scrolling sideways */
+            }
+            .esame-table {
+                width: 100% !important;
+                min-width: 0 !important;
+                table-layout: fixed !important;  /* distributes columns to fit */
+                border-collapse: collapse;
+            }
+            .esame-table th, .esame-table td {
+                padding: 8px 6px;
+                word-break: break-word;
+            }
+
+            /* 5) General spacing tweaks for small screens */
+            .container { padding: 12px; }
+            h2 { font-size: 1.1rem; }
+            h3 { font-size: 1.0rem; }
+            textarea { min-height: 110px; }
+            input, textarea, select { font-size: 16px; } /* avoids iOS zoom-on-focus */
+        }
+
+        /* --- tooltips (both desktop & mobile) --- */
+        .toolbar .btn[data-tip]{position:relative}
+        .toolbar .btn[data-tip]::after{
+            content:attr(data-tip);position:absolute;left:50%;bottom:110%;transform:translateX(-50%);
+            background:#111;color:#fff;font-size:12px;padding:4px 8px;border-radius:6px;white-space:nowrap;
+            opacity:0;visibility:hidden;transition:.15s
+        }
+        .toolbar .btn[data-tip]:hover::after,
+        .toolbar .btn[data-tip].show-tip::after{opacity:1;visibility:visible}
+
+        /* --- MOBILE ONLY: icon-only, centered, equal gaps --- */
+        @media (max-width:600px){
+            .toolbar .toolbar-content{
+                display:flex !important; flex-wrap:wrap !important;
+                justify-content:center !important; /* center */
+                gap:12px !important;               /* equal spacing */
+            }
+            .toolbar .btn{
+                width:56px; height:56px;           /* equal-sized squares */
+                display:flex; align-items:center; justify-content:center;
+                padding:0; font-size:0;            /* hide plain text */
+            }
+            .toolbar .btn .label{display:none !important} /* hide label span */
+            .toolbar .btn i{font-size:22px; line-height:1}
+        }
+
+        /* don't show tooltips on print */
+        @media print{ .toolbar .btn[data-tip]::after{display:none!important} }
+
+        /* === MOBILE-ONLY LAYOUT FIX (desktop/print unchanged) === */
+        @media (max-width:600px){
+
+          /* page centering */
+          .container, main, section.card{ margin-inline:auto !important; }
+
+          /* headings */
+          h1,h2,h3{ text-align:center !important; }
+
+          /* toolbar can wrap naturally (no cut offs) */
+          .toolbar{ overflow:visible !important; }
+          .toolbar .row{
+            display:flex !important; flex-wrap:wrap !important;
+            justify-content:center !important; gap:12px !important;
+          }
+
+          /* scoreboard: stack & center */
+          .scoreboard{
+            display:flex !important; flex-direction:column !important;
+            align-items:center !important; justify-content:center !important;
+            gap:8px !important; text-align:center !important; width:100% !important;
+          }
+          .scoreboard input[type="text"],
+          .scoreboard input[type="number"]{
+            display:block !important; margin-inline:auto !important; text-align:center !important;
+            width: min(420px, 100%) !important;
+          }
+          .scoreboard .vs{ font-weight:700; }
+
+          /* match info grids → single column */
+          .form-grid, .grid-2{
+            display:grid !important; grid-template-columns:1fr !important; gap:12px !important;
+          }
+
+          /* ESAME: stack sides, center content */
+          .esame-columns{ display:block !important; }
+          .esame-block{ width:100% !important; margin:0 0 16px 0 !important; }
+
+          /* coach field full-width & centered */
+          .coach-field{ max-width:460px; margin:0 auto 12px auto !important; }
+          .coach-field label{ display:block; text-align:center; }
+          .coach-field input, .coach-field textarea{ width:100% !important; }
+
+          /* tables fit screen; no horizontal scroll on page */
+          .table-wrap{ width:100% !important; margin-inline:auto !important; overflow-x:hidden !important; }
+          .esame-table{
+            width:100% !important; table-layout:fixed !important; margin-inline:auto !important; text-align:center !important;
+          }
+          .esame-table th, .esame-table td{ text-align:center !important; word-break:break-word; padding:8px 6px; }
+
+          /* inputs tap-friendly */
+          input, textarea, select{ font-size:16px; } /* avoid iOS zoom */
+        }
+    </style>
 </head>
 <body>
     <!-- Header -->
@@ -739,32 +910,27 @@
         <div class="container">
             <div class="toolbar-content">
                 <button class="toolbar-btn" onclick="newReport()">
-                    <span class="btn-icon">📄</span>
-                    Yeni
+                    <i class="ri-file-add-line"></i><span class="label">Yeni</span>
                 </button>
                 <button class="toolbar-btn" onclick="saveReport()">
-                    <span class="btn-icon">💾</span>
-                    Kaydet
+                    <i class="ri-save-3-line"></i><span class="label">Kaydet</span>
                 </button>
                 <button class="toolbar-btn" onclick="openReportsModal()">
-                    <span class="btn-icon">📋</span>
-                    Raporlar
+                    <i class="ri-file-chart-line"></i><span class="label">Raporlar</span>
                 </button>
                 <div class="dropdown">
                     <button class="toolbar-btn dropdown-btn" onclick="toggleExportDropdown()">
-                        <span class="btn-icon">📤</span>
-                        Dışa Aktar
+                        <i class="ri-external-link-line"></i><span class="label">Dışa Aktar</span>
                         <span class="dropdown-arrow">▼</span>
                     </button>
                     <div class="dropdown-menu" id="exportDropdown">
-                        <button type="button" id="btnExportPdf">📄 PDF</button>
-                        <button onclick="exportToWord()">📝 Word (.doc)</button>
-                        <button onclick="exportToJSON()">💾 JSON İndir</button>
+                        <button type="button" id="btnExportPdf"><i class="ri-file-pdf-line"></i> PDF</button>
+                        <button onclick="exportToWord()"><i class="ri-file-word-line"></i> Word (.doc)</button>
+                        <button onclick="exportToJSON()"><i class="ri-download-2-line"></i> JSON İndir</button>
                     </div>
                 </div>
                 <button class="toolbar-btn" onclick="importJSON()">
-                    <span class="btn-icon">📥</span>
-                    İçe Aktar
+                    <i class="ri-upload-2-line"></i><span class="label">İçe Aktar</span>
                 </button>
             </div>
         </div>
@@ -1785,6 +1951,48 @@
              // Also expose if you trigger from a menu item
              window.exportPdfNow = exportPdfNow;
          })();
+
+         // ===== MOBILE TOOLBAR DRAG-TO-SCROLL FUNCTIONALITY =====
+         (function () {
+             const rail = document.querySelector('.toolbar .row');
+             if (!rail) return;
+
+             // Mouse/touch drag to scroll
+             let isDown = false, startX = 0, startScroll = 0;
+             const down = e => { isDown = true; startX = (e.touches ? e.touches[0].pageX : e.pageX); startScroll = rail.scrollLeft; };
+             const move = e => {
+                 if (!isDown) return;
+                 const x = (e.touches ? e.touches[0].pageX : e.pageX);
+                 rail.scrollLeft = startScroll - (x - startX);
+                 e.preventDefault();
+             };
+             const up = () => { isDown = false; };
+
+             rail.addEventListener('mousedown', down);
+             rail.addEventListener('mousemove', move);
+             window.addEventListener('mouseup', up);
+             rail.addEventListener('touchstart', down, {passive:true});
+             rail.addEventListener('touchmove', move, {passive:false});
+             rail.addEventListener('touchend', up);
+
+             // Turn vertical wheel into horizontal scroll on mobile/trackpads
+             rail.addEventListener('wheel', (e) => {
+                 if (Math.abs(e.deltaX) < Math.abs(e.deltaY)) {
+                     rail.scrollLeft += e.deltaY;
+                     e.preventDefault();
+                 }
+             }, { passive: false });
+         })();
+
+         // ===== MOBILE ICON-ONLY TOOLBAR TOOLTIPS =====
+         document.querySelectorAll('.toolbar .btn').forEach(b=>{
+             const label = b.querySelector('.label')?.textContent?.trim() || b.textContent.trim();
+             b.setAttribute('data-tip', label);
+             b.setAttribute('aria-label', label);
+             // long-press tooltip for touch
+             let t; b.addEventListener('touchstart',()=>{ t=setTimeout(()=>b.classList.add('show-tip'),500)},{passive:true});
+             b.addEventListener('touchend',()=>{ clearTimeout(t); setTimeout(()=>b.classList.remove('show-tip'),800)},{passive:true});
+         });
      </script>
  </body>
  </html>
